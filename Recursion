@@ -1,0 +1,121 @@
+1.Print numbers from 1 to n without the help of loops.
+  
+class Solution {
+
+    public void printNos(int n) {
+        if(n <= 0) return;
+        printNos(n-1);
+        System.out.print(n+" ");
+    }
+}
+
+2.Print numbers from n to 1 without the help of loops.
+ class Solution {
+
+    void printNos(int n) {
+        if (n <= 0) {
+            return;
+        }
+        System.out.print(n + " ");
+        printNos(n - 1); 
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int N = 10; 
+        sol.printNos(N);
+    }
+}
+
+3.sum of first n numbers.
+class Solution {
+    int sumOfSeries(int n) {
+    if (n < 1 || n > 200) return 0;
+        
+        if (n == 1) {
+            return 1;
+        }
+        return n * n * n + sumOfSeries(n - 1);
+    }
+}
+4.factorial of n numbers.
+class Solution {
+    static ArrayList<Long> factorialNumbers(long n) {
+         ArrayList<Long> factNums=new ArrayList<Long>();
+        long k=1;
+        while(n>=fact(k)){
+            fact(k);
+             factNums.add(fact(k)); 
+            k++;
+        }
+       return factNums;
+    }
+    static long fact(long k){
+        if(k==0 || k==1){
+            return 1;
+        } else{
+            return k*fact(k-1);
+        }
+    }
+}
+
+5.Reverse an array.
+class Solution {
+    public void reverseArray(int arr[]) {
+    int arrayLength = arr.length;
+        int i = 0;
+        while (i < arrayLength / 2) {
+            int temp = arr[i];
+            arr[i] = arr[arrayLength - 1 - i];
+            arr[arrayLength - 1 - i] = temp;
+            i++;
+        };
+    }
+}
+
+6.palindrome.
+class Solution {
+    public boolean isPalindrome(String s) {
+        StringBuilder cleanString = new StringBuilder();
+        char[] arr = s.toCharArray();
+
+        for(int i = 0; i<arr.length; i++){
+            char c = arr[i];
+            if(Character.isLetterOrDigit(c)){
+                cleanString.append(Character.toLowerCase(c));
+            }
+        }
+        return cleanString.toString().equals(cleanString.reverse().toString());
+    }
+
+7.Fibonacci.
+class Solution {
+    public int fib(int n) {
+        if(n <= 1) return n;
+
+        return fib(n - 1) + fib(n - 2);
+    }
+}
+
+8.print name n times using recursion.
+
+class Solution {
+
+    void printGfg(int N) {
+     if(N<=0)
+            return;
+        printGfg(N-1);
+        System.out.print("GFG ");
+    
+    }
+}
+
+9.print something n times.
+class Solution {
+
+    public void printNos(int n) {
+        if(n <= 0) return;
+        printNos(n-1);
+        System.out.print(n+" ");
+    }
+}
