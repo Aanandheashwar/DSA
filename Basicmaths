@@ -1,0 +1,136 @@
+1.Count Digits.
+class Solution {
+    static int evenlyDivides(int n) {
+        int current = n;
+        int result = 0;
+        while(current > 0){
+            int temp = current % 10;
+            if(temp != 0){
+                result += (n % temp == 0) ? 1 : 0;
+            }
+            current /= 10; 
+        }       
+        return result;    
+    }
+}
+
+2.Reverse a number.
+class Solution {
+    public int reverse(int x) {
+        int reversed = 0;
+        int sign = (x < 0) ? -1 : 1; 
+        x = Math.abs(x); 
+        
+        while (x != 0) {
+            int digit = x % 10; 
+            x /= 10;  
+            
+            if (reversed > Integer.MAX_VALUE / 10 || 
+                (reversed == Integer.MAX_VALUE / 10 && digit > Integer.MAX_VALUE % 10)) {
+                return 0;  
+            }
+                        reversed = reversed * 10 + digit;
+        }
+        
+        return sign * reversed;
+    }
+}
+
+3.check palindrome.
+class Solution {
+    public boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+
+        long reversed = 0;
+        long temp = x;
+
+        while (temp != 0) {
+            int digit = (int) (temp % 10);
+            reversed = reversed * 10 + digit;
+            temp /= 10;
+        }
+
+        return (reversed == x);
+    }
+}
+
+4.GCD//HCF
+class Solution {
+    public static int[] lcmAndGcd(int a, int b) {
+        int m=a,n=b;
+        while(b!=0)
+        {
+            int r=a%b;
+            a=b;
+            b=r;
+        }
+        int gcd=a;
+        int lcm=(m*n)/gcd;
+        return new int[]{lcm,gcd};
+    }
+}
+
+5.PRINT ALL DIVISORS.
+class Solution {
+    public static int sumOfDivisors(int n) {
+        int sum = 0;
+        for (int i =1; i<=n; i++){
+            for(int j= 1;j<=n;j++){
+                if(i%j==0){
+                    sum = sum+j;
+                }
+            }
+        }
+        return sum;
+    }
+} 
+
+6.check for prime.
+class Solution {
+    public int minJumps(int[] arr) {
+        int n = arr.length;
+       
+        if (n == 1) {
+            return 0;
+        }
+       
+        if (arr[0] == 0) {
+            return -1;
+        }
+       
+        int jumps = 0;
+        int currentEnd = 0;
+        int farthest = 0;
+       
+        for (int i = 0; i < n; i++) {
+            farthest = Math.max(farthest, i + arr[i]);
+           
+            if (i == currentEnd) {
+                jumps++;
+                currentEnd = farthest;
+               
+                if (currentEnd >= n - 1) {
+                    return jumps;
+                }
+            }
+        }
+       
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        Solution obj = new Solution();
+       
+       
+        int[] arr1 = {1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9};
+        System.out.println(obj.minJumps(arr1));
+       
+        int[] arr2 = {1, 4, 3, 2, 6, 7};
+        System.out.println(obj.minJumps(arr2));
+       
+        int[] arr3 = {0, 10, 20};
+        System.out.println(obj.minJumps(arr3));
+    }
+}
